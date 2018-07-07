@@ -13,6 +13,19 @@
 
     "jsList" : [
         "src/resource.js",
-        "src/app.js"
+        "src/menu.js",
+        "src/item1.js",
+        "src/item2.js",
+        "src/item3.js",
+        "src/item31.js",
+        "src/item4.js",
+        "src/item41.js",
+        "src/app.js",
+        "src/item5.js",
+        "src/item6.js",
+        "src/item7.js"
+
+
+
     ]
 }
