@@ -7,26 +7,18 @@ var Item7Layer = cc.Layer.extend({
 
         this.ball = new Ball(res.ball_png);
         this.ball.x = cc.winSize.width/2;
-        this.ball.y = cc.winSize.height/2;
-        this.ball.setXY(4,4)
+        this.ball.y = cc.winSize.height/4;
+        this.ball.setXY(6,6);
         this.addChild(this.ball);
 
-        this.bricks = []; this.bricksRect = [];
-        for (var i=0; i<20; i++){
+        this.bricks = [];
+        for (var i=0; i<80; i++){
             this.bricks[i] = new cc.Sprite(res.brick_png);
             this.bricks[i].attr({
-                x: this.bricks[i].width*i + this.bricks[i].width/2,
-                y: cc.winSize.height * 6 / 8
+                x: this.bricks[i].width*(i%20) + this.bricks[i].width/2,
+                y: cc.winSize.height * (10-parseInt(i/20)) / 12
             });
             this.addChild(this.bricks[i]);
-
-            this.bricksRect[i] = new cc.Rect(
-                this.bricks[i].x - this.bricks[i].width/2 - this.ball.width/2,
-                this.bricks[i].y - this.bricks[i].height/2 - this.ball.height/2,
-                this.bricks[i].width + this.ball.width,
-                this.bricks[i].height + this.ball.height
-            );
-
 
         }
 
@@ -42,7 +34,7 @@ var Item7Layer = cc.Layer.extend({
 
         for (var i=0; i<layer.bricks.length; i++){
 
-            // 上下判斷,先限制左右
+            // 上下
             if (
                 this.x<=layer.bricks[i].x+layer.bricks[i].width/2 &&
                 this.x>=layer.bricks[i].x-layer.bricks[i].width/2 &&
@@ -57,7 +49,7 @@ var Item7Layer = cc.Layer.extend({
                 break;
             }
 
-            //左右判斷,限制上下
+            //
             if (
                 this.y<=layer.bricks[i].y+layer.bricks[i].height/2 &&
                 this.y>=layer.bricks[i].y-layer.bricks[i].height/2 &&
